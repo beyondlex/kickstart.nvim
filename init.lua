@@ -251,6 +251,10 @@ do
     group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
     callback = function() vim.hl.on_yank() end,
   })
+
+  do
+    require('custom.keymaps')
+  end
 end
 
 -- ============================================================
@@ -321,9 +325,7 @@ end
 
 ---Because most plugins are hosted on GitHub, you can use the helper
 ---function to have less repetition in the following sections.
----@param repo string
----@return string
-local function gh(repo) return 'https://github.com/' .. repo end
+local gh = require('custom.utils').gh
 
 -- ============================================================
 -- SECTION 4: UI / CORE UX PLUGINS
@@ -970,13 +972,13 @@ do
   -- require 'kickstart.plugins.indent_line'
   -- require 'kickstart.plugins.lint'
   -- require 'kickstart.plugins.autopairs'
-  -- require 'kickstart.plugins.neo-tree'
+  require 'kickstart.plugins.neo-tree'
   -- require 'kickstart.plugins.gitsigns' -- adds gitsigns recommended keymaps
 
   -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- require 'custom.plugins'
+  require 'custom.plugins'
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
