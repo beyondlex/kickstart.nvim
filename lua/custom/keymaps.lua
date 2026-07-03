@@ -59,4 +59,5 @@ vim.keymap.set('n', '<D-S-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decre
 
 -- neotree toggle
 vim.keymap.set("n", "<leader>e", "<cmd> Neotree toggle <CR>", { desc = "Neotree toggle" })
+vim.keymap.set("n", "<leader>1", "<cmd> Neotree filesystem reveal left <CR>", { desc = "Neotree reveal file" })
 
