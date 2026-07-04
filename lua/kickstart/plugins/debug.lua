@@ -23,6 +23,8 @@ vim.pack.add {
 -- F1   , F2  , F3  , F4
 -- stop , ui
 -- dx   , du
+--
+vim.keymap.set('n', '<F10>', function() require"osv".launch({port = 8086}) end, { desc = 'Debug: Listen on 8086' })
 vim.keymap.set('n', '<F1>', function() require('dap').step_over() end, { desc = 'Debug: Step Over' })
 vim.keymap.set('n', '<F2>', function() require('dap').step_into() end, { desc = 'Debug: Step Into' })
 vim.keymap.set('n', '<F3>', function() require('dap').step_out() end, { desc = 'Debug: Step Out' })
@@ -78,8 +80,9 @@ dapui.setup {
 }
 
 -- Change breakpoint icons
--- vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
--- vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
+vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
+vim.api.nvim_set_hl(0, 'DapStop', { bg = '#c7254e', fg = '#ffffff' })
+vim.api.nvim_set_hl(0, 'DapStopped', { bg = '#c7254e' })
 local breakpoint_icons = vim.g.have_nerd_font
     and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
   or { Breakpoint = '●', BreakpointCondition = '⊜', BreakpointRejected = '⊘', LogPoint = '◆', Stopped = '⭔' }
