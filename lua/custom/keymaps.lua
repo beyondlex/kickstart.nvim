@@ -49,12 +49,13 @@ vim.keymap.set(
 )
 
 -- window resize
-vim.keymap.set('n', '<C-S-k>', '<cmd>resize +2<cr>', { desc = 'Increase Window Height' })
-vim.keymap.set('n', '<C-S-j>', '<cmd>resize -2<cr>', { desc = 'Decrease Window Height' })
-vim.keymap.set('n', '<leader>wl', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
-vim.keymap.set('n', '<leader>wh', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
+vim.keymap.set('n', '<D-S-Up>', '<cmd>resize +2<cr>', { desc = 'Increase Window Height' })
+vim.keymap.set('n', '<D-S-Down>', '<cmd>resize -2<cr>', { desc = 'Decrease Window Height' })
 vim.keymap.set('n', '<D-S-Right>', '<cmd>vertical resize +2<cr>', { desc = 'Increase Window Width' })
 vim.keymap.set('n', '<D-S-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decrease Window Width' })
+-- window split
+vim.keymap.set('n', '<leader>|', '<C-w>v', { desc = 'Split window right' })
+vim.keymap.set('n', '<leader>-', '<C-w>s', { desc = 'Split window below' })
 
 
 -- neotree toggle

@@ -367,7 +367,8 @@ do
   vim.pack.add { gh 'folke/which-key.nvim' }
   require('which-key').setup {
     -- Delay between pressing a key and opening which-key (milliseconds)
-    delay = 0,
+    delay = 500,
+    preset = 'helix',
     icons = { mappings = vim.g.have_nerd_font },
     -- Document existing key chains
     spec = {
