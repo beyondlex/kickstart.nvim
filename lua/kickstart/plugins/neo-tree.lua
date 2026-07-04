@@ -21,6 +21,14 @@ require('neo-tree').setup {
     mappings = {
       ["l"] = "open",
       ["h"] = "close_node",
+      ["P"] = {
+        "toggle_preview",
+        config = {
+          use_float = false,
+          use_snacks_image = true,
+          use_image_nvim = true
+        }
+      },
     },
   },
   filesystem = {
