@@ -361,20 +361,7 @@ do
   vim.pack.add { gh 'NMAC427/guess-indent.nvim' }
   require('guess-indent').setup {}
 
-  -- Here is a more advanced configuration example that passes options to `gitsigns.nvim`
-  --
-  -- See `:help gitsigns` to understand what each configuration key does.
-  -- Adds git related signs to the gutter, as well as utilities for managing changes
-  vim.pack.add { gh 'lewis6991/gitsigns.nvim' }
-  require('gitsigns').setup {
-    signs = {
-      add = { text = '+' }, ---@diagnostic disable-line: missing-fields
-      change = { text = '~' }, ---@diagnostic disable-line: missing-fields
-      delete = { text = '_' }, ---@diagnostic disable-line: missing-fields
-      topdelete = { text = '‾' }, ---@diagnostic disable-line: missing-fields
-      changedelete = { text = '~' }, ---@diagnostic disable-line: missing-fields
-    },
-  }
+  -- gitsigns is now configured in lua/kickstart/plugins/gitsigns.lua
 
   -- Useful plugin to show you pending keybinds.
   vim.pack.add { gh 'folke/which-key.nvim' }
@@ -523,6 +510,7 @@ do
   -- Enable Telescope extensions if they are installed
   pcall(require('telescope').load_extension, 'fzf')
   pcall(require('telescope').load_extension, 'ui-select')
+  pcall(require('telescope').load_extension, 'aerial')
 
   -- See `:help telescope.builtin`
   local builtin = require 'telescope.builtin'
@@ -986,7 +974,7 @@ do
   -- require 'kickstart.plugins.lint'
   -- require 'kickstart.plugins.autopairs'
   require 'kickstart.plugins.neo-tree'
-  -- require 'kickstart.plugins.gitsigns' -- adds gitsigns recommended keymaps
+  require 'kickstart.plugins.gitsigns' -- adds gitsigns recommended keymaps
 
   -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --
