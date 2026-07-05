@@ -24,11 +24,11 @@ vim.pack.add {
 -- stop , ui
 -- dx   , du
 --
-vim.keymap.set('n', '<F10>', function() require"osv".launch({port = 8086}) end, { desc = 'Debug: Listen on 8086' })
-vim.keymap.set('n', '<F1>', function() require('dap').step_over() end, { desc = 'Debug: Step Over' })
-vim.keymap.set('n', '<F2>', function() require('dap').step_into() end, { desc = 'Debug: Step Into' })
-vim.keymap.set('n', '<F3>', function() require('dap').step_out() end, { desc = 'Debug: Step Out' })
-vim.keymap.set('n', '<F4>', function() require('dap').continue() end, { desc = 'Debug: Start/Continue' })
+vim.keymap.set('n', '<F11>', function() require"osv".launch({port = 8086}) end, { desc = 'Debug: Listen on 8086' })
+vim.keymap.set('n', '<F8>', function() require('dap').step_over() end, { desc = 'Debug: Step Over' })
+vim.keymap.set('n', '<F7>', function() require('dap').step_into() end, { desc = 'Debug: Step Into' })
+vim.keymap.set('n', '<F6>', function() require('dap').step_out() end, { desc = 'Debug: Step Out' })
+vim.keymap.set('n', '<F9>', function() require('dap').continue() end, { desc = 'Debug: Start/Continue' })
 vim.keymap.set('n', '<leader>dx', function() require('dap').stop() end, { desc = 'Debug: Stop' })
 vim.keymap.set('n', '<leader>b', function() require('dap').toggle_breakpoint() end, { desc = 'Debug: Toggle Breakpoint' })
 vim.keymap.set('n', '<leader>B', function() require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ') end, { desc = 'Debug: Set Breakpoint' })
