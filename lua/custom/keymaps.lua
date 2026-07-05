@@ -56,6 +56,10 @@ vim.keymap.set('n', '<D-S-Left>', '<cmd>vertical resize -2<cr>', { desc = 'Decre
 -- window split
 vim.keymap.set('n', '<leader>|', '<C-w>v', { desc = 'Split window right' })
 vim.keymap.set('n', '<leader>-', '<C-w>s', { desc = 'Split window below' })
+-- buffer
+vim.keymap.set('n', '<leader>bd', ':bdelete<cr>', { desc = 'Buffer delete' })
+vim.keymap.set('n', '<leader>bn', ':bnext<cr>', { desc = 'Buffer next' })
+vim.keymap.set('n', '<leader>bp', ':bprevious<cr>', { desc = 'Buffer previous' })
 
 
 -- neotree toggle
