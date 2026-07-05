@@ -772,6 +772,11 @@ do
     vim.lsp.config(name, server)
     vim.lsp.enable(name)
   end
+
+
+  vim.pack.add { gh 'folke/neodev.nvim' }
+  require('neodev').setup {}
+
 end
 
 -- ============================================================
