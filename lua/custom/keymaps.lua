@@ -62,7 +62,3 @@ vim.keymap.set('n', '<leader>bn', ':bnext<cr>', { desc = 'Buffer next' })
 vim.keymap.set('n', '<leader>bp', ':bprevious<cr>', { desc = 'Buffer previous' })
 
 
--- neotree toggle
-vim.keymap.set("n", "<leader>e", "<cmd> Neotree toggle <CR>", { desc = "Neotree toggle" })
-vim.keymap.set("n", "<leader>1", "<cmd> Neotree filesystem reveal left <CR>", { desc = "Neotree reveal file" })
-
