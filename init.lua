@@ -774,8 +774,8 @@ do
   end
 
 
-  vim.pack.add { gh 'folke/neodev.nvim' }
-  require('neodev').setup {}
+  vim.pack.add { gh 'folke/lazydev.nvim' }
+  require('lazydev').setup {}
 
 end
 
