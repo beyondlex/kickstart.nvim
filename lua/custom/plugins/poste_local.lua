@@ -8,7 +8,10 @@ vim.pack.add {
   utils.gh('folke/snacks.nvim'),
 }
 
--- 本地插件：直接添加到 runtimepath
-vim.opt.runtimepath:append(vim.fs.normalize(os.getenv("HOME") .. "/code/github/poste"))
+local poste_path = vim.fs.normalize(os.getenv("HOME") .. "/code/github/poste")
+local poste_lua = poste_path .. "/lua/?.lua;" .. poste_path .. "/lua/?/init.lua"
+if not package.path:find(poste_lua, 1, true) then
+  package.path = poste_lua .. ";" .. package.path
+end
 
-require("poste").setup()
+require("poste").setup({})

@@ -14,7 +14,9 @@ require('snacks').setup {
       max_height = 40,
     },
   },
-  picker = { enabled = true },
+  picker = {
+    enabled = true,
+  },
   input = { enabled = true },
 }
 
