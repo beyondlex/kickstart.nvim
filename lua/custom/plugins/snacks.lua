@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 local utils = require('custom.utils')
 
 vim.pack.add { utils.gh 'folke/snacks.nvim' }
@@ -13,4 +14,6 @@ require('snacks').setup {
       max_height = 40,
     },
   },
+  picker = { enabled = true },
+  input = { enabled = true },
 }
