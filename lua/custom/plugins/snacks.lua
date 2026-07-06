@@ -1,9 +1,11 @@
 ---@diagnostic disable: undefined-global
+---@diagnostic disable: duplicate-set-field
 local utils = require('custom.utils')
 
 vim.pack.add { utils.gh 'folke/snacks.nvim' }
 
 require('snacks').setup {
+  debug = { enabled = true },
   image = {
     enabled = true,
     doc = {
@@ -21,3 +23,18 @@ require('snacks').setup {
 vim.keymap.set("n", "<leader>e", function() require('snacks').explorer() end, { desc = "Explorer toggle" })
 vim.keymap.set("n", "<leader>1", function() require('snacks').explorer({ reveal = vim.fn.expand('%') }) end, {
  desc = "Explorer reveal file" })
+
+_G.dd = function(...)
+  Snacks.debug.inspect(...)
+end
+_G.bt = function()
+  Snacks.debug.backtrace()
+end
+if vim.fn.has("nvim-0.11") == 1 then
+  vim._print = function(_, ...)
+    dd(...)
+  end
+else
+  vim.print = dd
+end
+
