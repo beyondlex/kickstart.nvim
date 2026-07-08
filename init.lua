@@ -173,7 +173,7 @@ do
   vim.o.confirm = true
 
   do
-    require('custom.options')
+    require 'custom.options'
   end
 end
 
@@ -262,15 +262,13 @@ do
     group = vim.api.nvim_create_augroup('kickstart-restore-cursor', { clear = true }),
     callback = function()
       local mark = vim.api.nvim_buf_get_mark(0, '"')
-      local lcount = vim.fn.line('$')
-      if mark[1] > 1 and mark[1] <= lcount then
-        pcall(vim.api.nvim_win_set_cursor, 0, { mark[1], mark[2] })
-      end
+      local lcount = vim.fn.line '$'
+      if mark[1] > 1 and mark[1] <= lcount then pcall(vim.api.nvim_win_set_cursor, 0, { mark[1], mark[2] }) end
     end,
   })
 
   do
-    require('custom.keymaps')
+    require 'custom.keymaps'
   end
 end
 
@@ -455,9 +453,7 @@ end
 -- Snacks picker setup, keymaps, LSP picker mappings
 -- ============================================================
 do
-  local function P()
-    return require('snacks').picker
-  end
+  local function P() return require('snacks').picker end
 
   vim.keymap.set('n', '<leader>sh', function() P().help() end, { desc = '[S]earch [H]elp' })
   vim.keymap.set('n', '<leader>sk', function() P().keymaps() end, { desc = '[S]earch [K]eymaps' })
@@ -467,7 +463,7 @@ do
   vim.keymap.set('n', '<leader>sg', function() P().grep() end, { desc = '[S]earch by [G]rep' })
   vim.keymap.set('n', '<leader>sd', function() P().diagnostics() end, { desc = '[S]earch [D]iagnostics' })
   vim.keymap.set('n', '<leader>sr', function() P().resume() end, { desc = '[S]earch [R]esume' })
-  vim.keymap.set('n', '<leader>s.', function() P().recent() end, { desc = '[S]earch Recent Files ("." for repeat)' })
+  vim.keymap.set('n', '<leader>s.', function() P().recent({filter = {cwd = true}}) end, { desc = '[S]earch Recent Files ("." for repeat)' })
   vim.keymap.set('n', '<leader>sc', function() P().commands() end, { desc = '[S]earch [C]ommands' })
   vim.keymap.set('n', '<leader><leader>', function() P().buffers() end, { desc = '[ ] Find existing buffers' })
 
@@ -486,18 +482,9 @@ do
     end,
   })
 
-  vim.keymap.set('n', '<leader>/', function()
-    P().lines()
-  end, { desc = '[/] Fuzzily search in current buffer' })
+  vim.keymap.set('n', '<leader>/', function() P().lines() end, { desc = '[/] Fuzzily search in current buffer' })
 
-  vim.keymap.set(
-    'n',
-    '<leader>s/',
-    function()
-      P().grep_buffers()
-    end,
-    { desc = '[S]earch [/] in Open Files' }
-  )
+  vim.keymap.set('n', '<leader>s/', function() P().grep_buffers() end, { desc = '[S]earch [/] in Open Files' })
 
   vim.keymap.set('n', '<leader>sn', function() P().files { cwd = vim.fn.stdpath 'config', follow = true } end, { desc = '[S]earch [N]eovim files' })
 end
@@ -686,9 +673,6 @@ do
     vim.lsp.config(name, server)
     vim.lsp.enable(name)
   end
-
-
-
 end
 
 -- ============================================================
@@ -898,6 +882,7 @@ do
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   require 'custom.plugins'
+  require 'custom.highlights'
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
