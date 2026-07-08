@@ -1,8 +1,7 @@
 ---@diagnostic disable: undefined-global
 ---@diagnostic disable: duplicate-set-field
-local utils = require('custom.utils')
 
-vim.pack.add { utils.gh 'folke/snacks.nvim' }
+vim.pack.add { 'https://github.com/folke/snacks.nvim' }
 
 require('snacks').setup {
   debug = { enabled = true },
@@ -16,7 +15,10 @@ require('snacks').setup {
       max_height = 40,
     },
   },
-  picker = { enabled = true },
+  picker = {
+    enabled = true,
+    preview = require('md-render.snacks').preview(),
+  },
   input = { enabled = true },
 }
 

@@ -1,4 +1,4 @@
 
 
 
-  -- vim.o.relativenumber = true
+vim.o.relativenumber = true
