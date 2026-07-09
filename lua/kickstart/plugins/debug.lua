@@ -52,6 +52,7 @@ require('mason-nvim-dap').setup {
   ensure_installed = {
     -- Update this to ensure that you have the debuggers for the langs you want
     'delve',
+    'codelldb',
   },
 }
 
@@ -134,3 +135,24 @@ dap.configurations.lua = {
 -- No setup() needed for osv.
 -- To start debugging: :lua require('osv').launch()
 -- Then press <F4> to attach.
+
+-- =========================================================
+-- Rust Debugger Configuration (codelldb)
+-- =========================================================
+-- codelldb is installed via Mason; mason-nvim-dap sets up the adapter.
+-- This tells nvim-dap how to launch Rust binaries.
+---
+---@diagnostic disable: missing-fields
+dap.configurations.rust = {
+  {
+    name = 'Launch (codelldb)',
+    type = 'codelldb',
+    request = 'launch',
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+    args = {},
+  },
+}
