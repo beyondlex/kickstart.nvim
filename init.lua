@@ -812,6 +812,9 @@ do
   local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
   require('nvim-treesitter').install(parsers)
 
+  -- Use bash parser for zsh files (zsh parser is third-party and often has ABI issues)
+  vim.treesitter.language.register('bash', 'zsh')
+
   ---@param buf integer
   ---@param language string
   local function treesitter_try_attach(buf, language)
