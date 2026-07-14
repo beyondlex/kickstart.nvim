@@ -156,3 +156,32 @@ dap.configurations.rust = {
     args = {},
   },
 }
+
+-- php
+-- ============================================================
+-- 2. 旧版PHP (Xdebug 2) 适配器
+--    使用 vscode-php-debug (xdebug.php-debug VSIX) 做 DAP ↔ DBGp 翻译。
+--    nvim-dap 通过 stdin/stdout 启动 node phpDebug.js,
+--    它监听 TCP :9010 等 Xdebug 从容器连过来。
+-- ============================================================
+local phpDebugPath = vim.fn.expand("~/.local/share/vscode-php-debug/extension/out/phpDebug.js")
+dap.adapters.php = {
+  type = "executable",
+  command = "node",
+  args = { phpDebugPath },
+}
+dap.configurations.php = {
+  {
+    type = "php",
+    request = "launch",
+    name = "Listen for Xdebug",
+    port = 9010,
+    log = true,
+    pathMappings = {
+      ["/var/www/html"] = vim.fn.isdirectory(vim.fn.getcwd() .. "/html") == 1
+        and vim.fn.resolve(vim.fn.getcwd() .. "/html")
+        or vim.fn.getcwd(),
+    },
+  },
+}
+
